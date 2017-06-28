@@ -7,18 +7,29 @@ var topics = ["Bugs Bunny", "Mickey Mouse", "Simba", "Pokemon", "Gumball", "Clar
     function displayToons() {
 
     var toon = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=cartoons&api_key=dc6zaTOxFJmzC&limit=5&rating=pg";
+    var queryURL = "http://api.giphy.com/v1/stickers/search?q=cartoon-characters&api_key=dc6zaTOxFJmzC&limit=5&rating=pg";
 
     $.ajax({
     url: queryURL,
     method: "GET"
     }).done(function(response) {
     console.log(response);
-    console.log(response.data[0].url);    
-    $("#toon-view").append(response.data[0].url);  
-    
-    renderButtons();  
+    console.log(response.data[0].images.preview_gif);    
+   /*
+   * None of this code is bringing the images to the page
+   */
   
+    //$("#giphy1").append(response.data[0].images.preview_gif);  
+    //$("#giphy1").html("<img src=" + response.data[0].embed_url + ">");
+    $("#giphy1").html("<img src=" + response.data[0].images.fixed_width_still.url);
+    
+    renderButtons(); 
+    
+    for (var i = 0; i < response.data.length; i++){
+      var imageUrl = response.data[i].fixed_height_still;
+    }
+    
+
     });
     }
 
