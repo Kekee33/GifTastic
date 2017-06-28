@@ -7,22 +7,24 @@ var topics = ["Bugs Bunny", "Mickey Mouse", "Simba", "Pokemon", "Gumball", "Clar
     function displayToons() {
 
     var toon = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/stickers/search?q=cartoon-characters&api_key=dc6zaTOxFJmzC&limit=5&rating=pg";
+    var queryURL = "http://api.giphy.com/v1/stickers/search?q=cartoons&api_key=dc6zaTOxFJmzC&limit=5&rating=pg";
 
     $.ajax({
     url: queryURL,
     method: "GET"
     }).done(function(response) {
     console.log(response);
-    console.log(response.data[0].images.preview_gif);    
-   /*
-   * None of this code is bringing the images to the page
-   */
-  
-    //$("#giphy1").append(response.data[0].images.preview_gif);  
-    //$("#giphy1").html("<img src=" + response.data[0].embed_url + ">");
-    $("#giphy1").html("<img src=" + response.data[0].images.fixed_width_still.url);
-    
+       
+    $("#giphy1").html("<img src='" + response.data[0].images.fixed_width.url + "'>");
+    $("#giphy2").html("<img src='" + response.data[1].images.fixed_width.url + "'>");
+    $("#giphy3").html("<img src='" + response.data[2].images.fixed_width.url + "'>");
+    $("#giphy4").html("<img src='" + response.data[3].images.fixed_width.url + "'>");
+    $("#giphy5").html("<img src='" + response.data[4].images.fixed_width.url + "'>");
+    $("#giphy6").html("<img src='" + response.data[0].images.fixed_width.url + "'>");
+    $("#giphy7").html("<img src='" + response.data[1].images.fixed_width.url + "'>");
+    $("#giphy8").html("<img src='" + response.data[2].images.fixed_width.url + "'>");
+    $("#giphy9").html("<img src='" + response.data[3].images.fixed_width.url + "'>");
+    $("#giphy10").html("<img src='" + response.data[4].images.fixed_width.url + "'>");
     renderButtons(); 
     
     for (var i = 0; i < response.data.length; i++){
