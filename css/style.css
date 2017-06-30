@@ -1,10 +1,23 @@
+
+
 .container {
-	width: 
-	float: right;
+	background: #F892BE;
 }
 
-.border {
-    border: 2px solid #ebebeb;
-    margin: 10px;
-    padding: 10px;
-    border-collapse: collapse;
+img {
+  max-width: 100%;
+}
+
+.button-wrap {
+  margin-bottom: 25px;
+}
+
+.gifs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gifs .gif {
+  width: 150px;
+  margin: 5px 5px;
+}

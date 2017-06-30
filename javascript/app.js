@@ -7,33 +7,43 @@ var topics = ["Bugs Bunny", "Mickey Mouse", "Simba", "Pokemon", "Gumball", "Clar
     function displayToons() {
 
     var toon = $(this).attr("data-name");
-    var queryURL = "http://api.giphy.com/v1/stickers/search?q=cartoons&api_key=dc6zaTOxFJmzC&limit=5&rating=pg";
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?key=dc6zaTOxFJmzC&limit=10&q=' + text;
+    var text =$(this).text().toLowerCase();
 
     $.ajax({
     url: queryURL,
     method: "GET"
     }).done(function(response) {
     console.log(response);
-       
-    $("#giphy1").html("<img src='" + response.data[0].images.fixed_width.url + "'>");
-    $("#giphy2").html("<img src='" + response.data[1].images.fixed_width.url + "'>");
-    $("#giphy3").html("<img src='" + response.data[2].images.fixed_width.url + "'>");
-    $("#giphy4").html("<img src='" + response.data[3].images.fixed_width.url + "'>");
-    $("#giphy5").html("<img src='" + response.data[4].images.fixed_width.url + "'>");
-    $("#giphy6").html("<img src='" + response.data[0].images.fixed_width.url + "'>");
-    $("#giphy7").html("<img src='" + response.data[1].images.fixed_width.url + "'>");
-    $("#giphy8").html("<img src='" + response.data[2].images.fixed_width.url + "'>");
-    $("#giphy9").html("<img src='" + response.data[3].images.fixed_width.url + "'>");
-    $("#giphy10").html("<img src='" + response.data[4].images.fixed_width.url + "'>");
-    renderButtons(); 
+    renderButtons();  
     
-    for (var i = 0; i < response.data.length; i++){
-      var imageUrl = response.data[i].fixed_height_still;
-    }
-    
+    $(".gifs").empty();
 
+    $.getJSON(queryURL, function(json) {
+    json.data.forEach(function(gif) {
+      var still_image = gif.images.downsized_still.url;
+      var animated = gif.images.downsized.url;
+      $('.gifs').append(
+        '<div class="gif" data-animated="' + animated + '" data-still="' + still_image + '">' +
+          '<img src="' + still_image + '">' +
+        '</div>'
+      );
     });
-    }
+    
+    
+    $('.gifs .gif').mouseenter(function() {
+      var gif = $(this);
+      gif.find('img').attr('src', gif.attr('data-animated'));
+    })
+    .mouseleave(function() {
+      var gif = $(this);
+      gif.find('img').attr('src', gif.attr('data-still'));
+    });
+  });
+}) 
+
+    };
+    
 
     function renderButtons() {
 
@@ -66,7 +76,9 @@ var topics = ["Bugs Bunny", "Mickey Mouse", "Simba", "Pokemon", "Gumball", "Clar
         renderButtons();
       });
 
-      $(document).on("click", ".toon", displayToons);
+      $(document).on("click", displayToons);
 
       
       renderButtons();
+
+    
