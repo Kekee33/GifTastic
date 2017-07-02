@@ -8,16 +8,12 @@ img {
   max-width: 100%;
 }
 
-.button-wrap {
-  margin-bottom: 25px;
-}
-
 .gifs {
   display: flex;
   flex-wrap: wrap;
 }
 
 .gifs .gif {
-  width: 150px;
+  width: 300px;
   margin: 5px 5px;
 }
