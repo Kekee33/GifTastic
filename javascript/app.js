@@ -1,14 +1,15 @@
 "Use Strict"
 
 var topics = ["Bugs Bunny", "Mickey Mouse", "Simba", "Pokemon", "Gumball", "Clarence", 
-				"Spongebob", "Goku", "Peppa Pig", "Casper"];
+        "Spongebob", "Goku", "Peppa Pig", "Casper"];
 
       
     function displayToons() {
 
     var toon = $(this).attr("data-name");
-    var queryURL = 'https://api.giphy.com/v1/gifs/search?key=dc6zaTOxFJmzC&limit=10&q=' + text;
     var text =$(this).text().toLowerCase();
+    var queryURL = 'https://api.giphy.com/v1/gifs/search?key=dc6zaTOxFJmzC&limit=10&q=' + text;
+    
 
     $.ajax({
     url: queryURL,
@@ -76,9 +77,20 @@ var topics = ["Bugs Bunny", "Mickey Mouse", "Simba", "Pokemon", "Gumball", "Clar
         renderButtons();
       });
 
-      $(document).on("click", displayToons);
+      $(document).on("click", ".toons", displayToons);
 
       
       renderButtons();
 
     
+     
+    // $("#giphy1").html("<img src='" + response.data[0].images.fixed_width.url + "'>");
+    // $("#giphy2").html("<img src='" + response.data[1].images.fixed_width.url + "'>");
+    // $("#giphy3").html("<img src='" + response.data[2].images.fixed_width.url + "'>");
+    // $("#giphy4").html("<img src='" + response.data[3].images.fixed_width.url + "'>");
+    // $("#giphy5").html("<img src='" + response.data[4].images.fixed_width.url + "'>");
+    // $("#giphy6").html("<img src='" + response.data[0].images.fixed_width.url + "'>");
+    // $("#giphy7").html("<img src='" + response.data[1].images.fixed_width.url + "'>");
+    // $("#giphy8").html("<img src='" + response.data[2].images.fixed_width.url + "'>");
+    // $("#giphy9").html("<img src='" + response.data[3].images.fixed_width.url + "'>");
+    // $("#giphy10").html("<img src='" + response.data[4].images.fixed_width.url + "'>");
