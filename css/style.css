@@ -1,0 +1,19 @@
+
+
+.container {
+	background: #F892BE;
+}
+
+img {
+  max-width: 100%;
+}
+
+.gifs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gifs .gif {
+  width: 300px;
+  margin: 5px 5px;
+}
