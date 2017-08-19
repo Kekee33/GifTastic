@@ -1,4 +1,4 @@
-"Use Strict"
+"Use Strict" 
 
 var topics = ["Bugs Bunny", "Mickey Mouse", "Simba", "Pokemon", "Gumball", "Clarence", 
         "Spongebob", "Goku", "Peppa Pig", "Casper", "Felix the cat", "Mighty Mouse"];
